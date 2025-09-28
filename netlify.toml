@@ -1,3 +1,2 @@
 [build]
-  functions = "functions"
-  publish = "index.html"
+  command = "node src/main.js"
