@@ -1,2 +1,2 @@
 [build]
-  command = "npm install && node src/main.js"
+  command = "node src/main.js"
