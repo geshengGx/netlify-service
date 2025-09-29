@@ -1,23 +1,22 @@
 import express from "express";
 import serverless from "serverless-http";
 import cors from "../../config/cors.js";
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { resolve } from 'path';
 
 // 路由导入
 import user from "../../routers/user.js"
 
 const api = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const projectRoot = process.cwd(); // 项目根目录
+const staticPath = resolve(projectRoot, 'public'); //静态资源目录
 
 // 将 public 目录设置为静态资源目录
-api.use('/static', express.static(path.join(__dirname, '../../public')));
+api.use('/static', express.static(staticPath));
 
 // 主页
 api.get('/', (req, res) => {
   // 使用 path.join 构建安全的绝对路径
-  res.sendFile(path.join(__dirname, '../../public/index.html'));
+  res.sendFile(resolve(staticPath, 'index.html'));
 });
 
 // 中间件
