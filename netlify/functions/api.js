@@ -1,21 +1,14 @@
 import express from "express";
 import serverless from "serverless-http";
 import cors from "../../config/cors.js";
-import { fileURLToPath } from 'url';
-import { dirname, resolve, join } from 'path';
+import { resolve } from 'path';
 
 // 路由导入
 import user from "../../routers/user.js"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// 假设你的 'public' 目录与当前 API 函数文件在同一目录级别
-const staticPath = join(__dirname, '../../public');
-
-
-
 const api = express();
+const projectRoot = process.cwd(); // 项目根目录
+const staticPath = resolve(projectRoot, 'public'); //静态资源目录
 
 // 将 public 目录设置为静态资源目录
 api.use('/static', express.static(staticPath));
