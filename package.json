@@ -4,15 +4,15 @@
   "description": "测试服务器",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
-  "main": "netlify/functions/api.js",
+  "type": "module",
+  "main": "development/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node netlify/functions/api.js"
+    "start": "node development/index.js"
   },
   "dependencies": {
     "@netlify/functions": "^4.2.6",
     "@types/express": "^5.0.3",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "serverless-http": "^4.0.0"
   }
